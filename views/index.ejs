@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Index</title>
+    <link rel="stylesheet" href="../index.css">
+</head>
+<body>
+<a href="/logout" style="color: white; position: absolute; top: 7%; left: 95%">Logout</a>
+   
+    
+   
+   <div> 
+     <div style="margin-left: 700px; margin-top: 80px;">
+         <h1 style="color: white; font-size: 30px;">Insert books to list</h1>
+     </div>
+    <div class="insert"> 
+    <form action="/insert" method="POST">
+        <input  type="text" name="book_name" placeholder="Book Name">
+        <input  type="text" name="author" placeholder="Author">
+        <input type="text" name="price" placeholder="Price">
+        <button type="submit" class="insertt">Insert</button>
+    </form>
+    </div>
+    
+    <% if(results) { %>
+        <% results.forEach(elem => { %>
+    <div class="display">
+        <div style="display: inline-block;">
+          <h1>Book name : <%= elem.book_name %></h1>
+            <h1>Author: <%= elem.author %></h1>
+            <h1>Price: <%= elem.price %></h1>
+       
+        </div> 
+        <div>
+        <div style="display: inline-block;"> 
+            <form action="/edit" method="POST">
+                <input type="hidden" name="id" value= <%= elem.id %> >
+                <button type="submit" class="edit">Edit</button>
+            </form>
+        </div>
+
+        <div style="display: inline-block;" > 
+            <form action="/delete" method="POST">
+                <input type="hidden" name="id" value= <%= elem.id %> >
+                <button type="submit" class="delete">Delete</button>
+            </form>
+        </div>
+    </div> </div>
+        <% }) } %>
+    
+   </div> 
+  
+
+</body>
+</html>

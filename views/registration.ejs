@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../login.css">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700;900&display=swap" rel="stylesheet">
+    <title>Registration</title>
+</head>
+<body style="background-color: rgba(7,54,93,255);">
+
+    <% if(errors) {  %>
+        <% errors.forEach(elem=>{     %>
+            <%= elem.msg %>
+            <br>
+        <% }) %>
+       <% } %>
+
+    <% if(message) {    %>
+        <%= message %>
+        <% } %>
+    <div class="grid">
+
+
+        <div>
+            <img src="../72.jpg" class="image"> 
+        </div>
+
+
+        <div class ="form">
+            <form action="/registration" method="POST" >
+                <div >
+                    <h1 class="fontstyle">Registration</h1>
+
+                </div>
+                <div>
+                    <input type="text" name="name" placeholder="Name" class="input1"> 
+                </div>
+
+                <div>
+                    <input type="email" name="email" placeholder="Email" class="input1"> 
+                </div>
+
+                <div>
+                    <input type="password" name="password" placeholder="Password" class="input1"> 
+                </div>
+
+
+                <div>
+                    <button type="submit" class="submit">Sign Up</button>
+                </div>
+                <div style="margin-top: 50px; margin-left: 66px;">
+                    Go to login page <a href="/login" >Login</a>
+                </div>
+            </form>
+           
+
+        </div>
+
+
+    </div>

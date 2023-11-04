@@ -1,0 +1,42 @@
+stages:
+  - build
+  - test
+  - deploy
+
+variables:
+  # Define environment variables needed for your application
+  MYSQL_ROOT_PASSWORD: ''
+  MYSQL_DATABASE: project
+  MYSQL_USER: root
+  MYSQL_PASSWORD: ''
+  NODE_ENV: production
+  # Add any other environment variables your application needs
+
+image: node:14 # Use a Node.js image compatible with your project
+
+before_script:
+  - npm install # Install project dependencies
+  - npm install -g mocha # Install Mocha globally (if not already installed)
+
+# Define jobs for each stage
+build:
+  stage: build
+  script:
+    - npm run build # Replace with your build command
+
+test:
+  stage: test
+  script:
+    - npm run test # Replace 'your-test-command' with your custom test command
+
+deploy:
+  stage: deploy
+  script:
+    - |
+      # Add deployment commands here
+      # For example, you can deploy your Docker container here
+      docker build -t crud_app . # Build Docker image
+      docker run -d -p 80:80 crud_app # Run the container
+
+# Add more jobs or modify existing ones as needed
+
