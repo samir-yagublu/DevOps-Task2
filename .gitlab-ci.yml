@@ -18,16 +18,16 @@ before_script:
   - npm install # Install project dependencies
   - npm install -g mocha # Install Mocha globally (if not already installed)
 
-# Define jobs for each stage
 build:
   stage: build
   script:
-    - npm run build # Replace with your build command
+    #- npm run build # Replace with your build command
+    - docker build -t crud_app .
 
 test:
   stage: test
   script:
-    - npm run test # Replace 'your-test-command' with your custom test command
+    - npx mocha test.js # Replace 'your-test-command' with your custom test command
 
 deploy:
   stage: deploy
@@ -35,8 +35,6 @@ deploy:
     - |
       # Add deployment commands here
       # For example, you can deploy your Docker container here
-      docker build -t crud_app . # Build Docker image
       docker run -d -p 80:80 crud_app # Run the container
 
 # Add more jobs or modify existing ones as needed
-
